@@ -3,32 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Bike Game with Mobile</title>
+    <title>3D Game Screen</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Three.js लायब्ररी ३D जगासाठी -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
-    <!-- ३D गेम स्क्रीन -->
     <div id="game-container"></div>
 
-    <!-- कॅरेक्टरचा इन-गेम मोबाईल फोन -->
     <div id="phone-container" class="hidden">
         <div class="phone-screen">
-            <div class="phone-header">12:00 PM</div>
+            <div class="phone-header">01:00 PM</div>
             <div class="phone-content">
-                <p>Enter Cheat Code:</p>
+                <p>चिटकोड टाका (Cheat Code):</p>
                 <input type="text" id="cheat-input" placeholder="उदा. 9999" maxlength="4">
-                <button onclick="applyCheatCode()">SPAWN</button>
+                <button onclick="applyCheatCode()">SPAWN BIKE</button>
             </div>
         </div>
     </div>
 
-    <!-- मोबाईल उघडण्यासाठी सूचना -->
     <div id="instructions">
-        'M' की (Key) दाबा मोबाईल उघडण्यासाठी/बंद करण्यासाठी. <br>
-        बाईक चालवण्यासाठी ARROW KEYS किंवा WASD वापरा.
+        📱 मोबाईल उघडण्यासाठी/बंद करण्यासाठी <strong>'M'</strong> की दाबा.<br>
+        🚶‍♂️ कॅरेक्टर चालवण्यासाठी <strong>Arrow Keys / WASD</strong> वापरा.
     </div>
 
     <script src="game.js"></script>
