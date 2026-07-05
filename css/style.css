@@ -23,11 +23,11 @@ body{
     z-index: 1;
 }
 
-/* फोन उघडण्याचे बटन वर उजव्या कोपऱ्यात */
+/* फोन बटन वर डाव्या बाजूला सेट केले जेणेकरून मध्ये येणार नाही */
 #open-phone-btn {
     position: absolute;
     top: 15px;
-    right: 15px;
+    left: 15px;
     padding: 10px 18px;
     background: #ff9800;
     color: white;
@@ -40,7 +40,7 @@ body{
     cursor: pointer;
 }
 
-/* इन-गेम मोबाईल फोन (सेंटरमध्ये पॉपअप) */
+/* इन-गेम मोबाईल फोन */
 #phone-container {
     position: absolute;
     top: 50%;
@@ -102,7 +102,7 @@ body{
     font-weight: bold;
 }
 
-/* --- GTA 5 सारखे लेआऊट (डावे आणि उजवे बटन्स) --- */
+/* कंट्रोल्स लेआऊट */
 #mobile-controls {
     position: absolute;
     bottom: 0;
@@ -110,27 +110,26 @@ body{
     width: 100vw;
     height: 100vh;
     z-index: 10;
-    pointer-events: none; /* ३D स्क्रीनवर टच व्हावा म्हणून */
+    pointer-events: none;
 }
 
 .left-cluster, .right-cluster {
     position: absolute;
-    bottom: 25px;
+    bottom: 20px;
     display: flex;
-    pointer-events: auto; /* बटन्सवर क्लिक व्हावं म्हणून */
+    pointer-events: auto;
 }
 
-/* डावी बाजू: वळवण्यासाठी बटन्स */
 .left-cluster {
     left: 25px;
     gap: 15px;
 }
 
-/* उजवी बाजू: रेस आणि ब्रेक बटन्स (उभे) */
 .right-cluster {
     right: 25px;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    align-items: flex-end;
 }
 
 .ctrl-btn {
@@ -147,18 +146,35 @@ body{
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* रेस आणि ब्रेकचे बटन्स थोडे लांबट (Pedals सारखे) */
 .pedal-btn {
-    width: 100px;
+    width: 120px;
     height: 50px;
     border-radius: 10px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
 }
 
-#btn-up { background: rgba(40, 167, 69, 0.6); } /* हिरवा रेस */
-#btn-down { background: rgba(220, 53, 69, 0.6); } /* लाल ब्रेक */
+#btn-up { background: rgba(40, 167, 69, 0.6); } 
+#btn-down { background: rgba(220, 53, 69, 0.6); } 
 
 .ctrl-btn:active {
     background: rgba(255, 255, 255, 0.4) !important;
 }
+
+/* ** एंटर/एक्झिट बटन आता उजव्या बाजूला रेस बटन्सच्या अगदी वर दिसेल ** */
+#exit-btn {
+    width: 120px;
+    height: 45px;
+    background: #d90429;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#exit-btn:active { background: #b10000; }
