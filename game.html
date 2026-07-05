@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>3D GTA Style Game</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- 3D जगासाठी Three.js लायब्ररी -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
-    <!-- ३D गेम कंटेनर -->
     <div id="game-container"></div>
 
-    <!-- मोबाईल फोन उघडण्याचे बटन (वर डाव्या कोपऱ्यात ठेवू जेणेकरून अडचण होणार नाही) -->
     <button id="open-phone-btn" onclick="toggleMobilePhone()">📱 PHONE</button>
 
-    <!-- इन-गेम मोबाईल फोन (चिटकोड स्क्रीन) -->
     <div id="phone-container" class="hidden">
         <div class="phone-screen">
             <div class="phone-header">03:00 PM</div>
@@ -28,17 +24,12 @@
         </div>
     </div>
 
-    <!-- ऑन-स्क्रीन कंट्रोल्स आणि एंटर/एक्झिट बटन -->
     <div id="mobile-controls">
-        <!-- डाव्या बाजूला वळवण्यासाठी बटन्स -->
-        <div class="left-cluster">
-            <button class="ctrl-btn" id="btn-left">◀</button>
-            <button class="ctrl-btn" id="btn-right">▶</button>
+        <div id="joystick-container">
+            <div id="joystick-knob"></div>
         </div>
         
-        <!-- उजव्या बाजूला पळवण्यासाठी, ब्रेकसाठी आणि गाडीत बसण्यासाठी बटन्स -->
         <div class="right-cluster">
-            <!-- गाडीत बसण्याचे बटन आता थेट रेस बटनच्या वर दिसेल -->
             <button id="exit-btn" onclick="toggleVehicleDrive()">🚗 ENTER / EXIT</button>
             <button class="ctrl-btn pedal-btn" id="btn-up">▲ RACE / WALK</button>
             <button class="ctrl-btn pedal-btn" id="btn-down">▼ BREAK / BACK</button>
