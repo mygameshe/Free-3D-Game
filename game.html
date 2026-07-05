@@ -11,20 +11,28 @@
 
     <div id="game-container"></div>
 
+    <button id="open-phone-btn" onclick="toggleMobilePhone()">📱 OPEN PHONE</button>
+
     <div id="phone-container" class="hidden">
         <div class="phone-screen">
-            <div class="phone-header">01:00 PM</div>
+            <div class="phone-header">02:00 PM</div>
             <div class="phone-content">
                 <p>चिटकोड टाका (Cheat Code):</p>
-                <input type="text" id="cheat-input" placeholder="उदा. 9999" maxlength="4">
+                <input type="number" id="cheat-input" placeholder="उदा. 9999" pattern="[0-9]*">
                 <button onclick="applyCheatCode()">SPAWN BIKE</button>
             </div>
         </div>
     </div>
 
-    <div id="instructions">
-        📱 मोबाईल उघडण्यासाठी/बंद करण्यासाठी <strong>'M'</strong> की दाबा.<br>
-        🚶‍♂️ कॅरेक्टर चालवण्यासाठी <strong>Arrow Keys / WASD</strong> वापरा.
+    <div id="mobile-controls">
+        <div class="control-row">
+            <button class="ctrl-btn" id="btn-up">▲</button>
+        </div>
+        <div class="control-row">
+            <button class="ctrl-btn" id="btn-left">◀</button>
+            <button class="ctrl-btn" id="btn-down">▼</button>
+            <button class="ctrl-btn" id="btn-right">▶</button>
+        </div>
     </div>
 
     <script src="game.js"></script>
