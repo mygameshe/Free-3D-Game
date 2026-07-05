@@ -1,85 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="mr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bike Game</title>
-
-<style>
-body{
-margin:0;
-overflow:hidden;
-background:#4fc3f7;
-}
-
-#game{
-position:relative;
-width:100vw;
-height:100vh;
-overflow:hidden;
-}
-
-#road{
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-width:220px;
-height:100%;
-background:#444;
-}
-
-.line{
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-width:10px;
-height:60px;
-background:white;
-animation:move 1s linear infinite;
-}
-
-@keyframes move{
-0%{top:-60px;}
-100%{top:100vh;}
-}
-
-#bike{
-position:absolute;
-bottom:40px;
-left:50%;
-transform:translateX(-50%);
-font-size:55px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Bike Game with Mobile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Three.js लायब्ररी ३D जगासाठी -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-
 <body>
 
-<div id="game">
+    <!-- ३D गेम स्क्रीन -->
+    <div id="game-container"></div>
 
-<div id="road">
-<div class="line" style="animation-delay:0s"></div>
-<div class="line" style="animation-delay:.25s"></div>
-<div class="line" style="animation-delay:.5s"></div>
-<div class="line" style="animation-delay:.75s"></div>
-</div>
+    <!-- कॅरेक्टरचा इन-गेम मोबाईल फोन -->
+    <div id="phone-container" class="hidden">
+        <div class="phone-screen">
+            <div class="phone-header">12:00 PM</div>
+            <div class="phone-content">
+                <p>Enter Cheat Code:</p>
+                <input type="text" id="cheat-input" placeholder="उदा. 9999" maxlength="4">
+                <button onclick="applyCheatCode()">SPAWN</button>
+            </div>
+        </div>
+    </div>
 
-<div id="bike">🏍️</div>
+    <!-- मोबाईल उघडण्यासाठी सूचना -->
+    <div id="instructions">
+        'M' की (Key) दाबा मोबाईल उघडण्यासाठी/बंद करण्यासाठी. <br>
+        बाईक चालवण्यासाठी ARROW KEYS किंवा WASD वापरा.
+    </div>
 
-</div>
-
-<script>
-
-let bike=document.getElementById("bike");
-let x=window.innerWidth/2;
-
-document.addEventListener("keydown",e=>{
-if(e.key=="ArrowLeft") x-=20;
-if(e.key=="ArrowRight") x+=20;
-bike.style.left=x+"px";
-});
-
-</script>
-
+    <script src="game.js"></script>
 </body>
 </html>
