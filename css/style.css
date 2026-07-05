@@ -1,1 +1,66 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
+body{
+  background:#0d1117;
+  color:#fff;
+  overflow:hidden;
+}
+
+#game{
+  width:100vw;
+  height:100vh;
+  position:relative;
+  background:linear-gradient(#4fc3f7,#87ceeb);
+}
+
+#road{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:260px;
+  height:100%;
+  background:#444;
+  border-left:5px solid #fff;
+  border-right:5px solid #fff;
+}
+
+.line{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:8px;
+  height:60px;
+  background:#fff;
+  animation:roadMove 1s linear infinite;
+}
+
+@keyframes roadMove{
+  from{
+    top:-60px;
+  }
+  to{
+    top:100%;
+  }
+}
+
+#bike{
+  position:absolute;
+  bottom:50px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:60px;
+  transition:0.1s;
+}
+
+#score{
+  position:absolute;
+  top:20px;
+  left:20px;
+  font-size:24px;
+  font-weight:bold;
+}
