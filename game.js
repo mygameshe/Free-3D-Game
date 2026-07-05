@@ -1,13 +1,13 @@
 let scene, camera, renderer;
-let player, ground; // player आता एक ग्रुप असेल ज्यात डोके, हात, पाय असतील
+let player, ground; 
 let vehicle = null; 
 let vehicleType = ""; 
 let isDriving = false; 
 
-// मूव्हमेंट फिजिक्स
+// हालचाली आणि फिजिक्स
 let carSpeed = 0;
 let carAngle = 0; 
-let playerAngle = 0; // प्लेयरचे स्वतःचे वळण
+let playerAngle = 0; 
 const maxSpeed = 0.8;
 const acceleration = 0.02;
 const braking = 0.04;
@@ -33,7 +33,7 @@ function init3D() {
     dirLight.position.set(20, 50, 20);
     scene.add(dirLight);
 
-    // हिरवे मैदान
+    // मैदान
     const groundGeo = new THREE.PlaneGeometry(2000, 2000);
     const groundMat = new THREE.MeshStandardMaterial({ color: 0x4caf50, roughness: 0.9 });
     ground = new THREE.Mesh(groundGeo, groundMat);
@@ -48,7 +48,7 @@ function init3D() {
     road.position.set(0, 0.02, -1500);
     scene.add(road);
 
-    // रस्त्यावरील पांढऱ्या लाईन्स
+    // पांढऱ्या लाईन्स
     for(let i = 0; i > -3500; i -= 40) {
         const lineGeo = new THREE.PlaneGeometry(0.6, 15);
         const lineMat = new THREE.MeshStandardMaterial({ color: 0xffffff });
@@ -60,29 +60,26 @@ function init3D() {
 
     createCityHouses();
 
-    // ==========================================
-    // ** ३D मानवी कॅरेक्टर तयार करणे (CJ सारखा पुतळा) **
-    // ==========================================
+    // ३D मानवी पुतळा (Player Group)
     player = new THREE.Group();
 
-    // १. धड (Body/Torso - पांढरी बनियान स्टाईल)
+    // १. धड (Body)
     const torsoGeo = new THREE.BoxGeometry(0.9, 1.2, 0.5);
-    const torsoMat = new THREE.MeshStandardMaterial({ color: 0xeeeeee, roughness: 0.7 }); // पांढरा
+    const torsoMat = new THREE.MeshStandardMaterial({ color: 0xeeeeee, roughness: 0.7 }); 
     const torso = new THREE.Mesh(torsoGeo, torsoMat);
     torso.position.y = 1.4;
     player.add(torso);
 
-    // २. डोके (Head - स्किन Color)
+    // २. डोके (Head)
     const headGeo = new THREE.BoxGeometry(0.4, 0.4, 0.4);
-    const headMat = new THREE.MeshStandardMaterial({ color: 0x8d5524 }); // ब्राउन स्किन टोन
+    const headMat = new THREE.MeshStandardMaterial({ color: 0x8d5524 }); 
     const head = new THREE.Mesh(headGeo, headMat);
     head.position.y = 2.1;
     player.add(head);
 
-    // ३. पाय (Legs - निळी जीन्स स्टाईल)
-    const legMat = new THREE.MeshStandardMaterial({ color: 0x1565c0 }); // ब्लू जीन्स रंग
+    // ३. पाय (Legs)
+    const legMat = new THREE.MeshStandardMaterial({ color: 0x1565c0 }); 
     const leftLegGeo = new THREE.BoxGeometry(0.3, 0.9, 0.3);
-    
     const leftLeg = new THREE.Mesh(leftLegGeo, legMat);
     leftLeg.position.set(-0.25, 0.45, 0);
     player.add(leftLeg);
@@ -94,7 +91,6 @@ function init3D() {
     // ४. हात (Arms)
     const armMat = new THREE.MeshStandardMaterial({ color: 0x8d5524 });
     const armGeo = new THREE.BoxGeometry(0.25, 0.9, 0.25);
-    
     const leftArm = new THREE.Mesh(armGeo, armMat);
     leftArm.position.set(-0.6, 1.4, 0);
     player.add(leftArm);
@@ -145,24 +141,28 @@ function toggleMobilePhone() {
     phone.classList.toggle('hidden');
 }
 
-// ** गाडीत बसणे / गाडीतून उतरण्याचे लॉजिक **
+// ** एआय मॉडिफाईड: गाडीत बसणे / उतरणे परफेक्ट लॉजिक **
 function toggleVehicleDrive() {
-    if (!vehicle) return;
+    if (!vehicle) {
+        alert("पहिले फोन उघडून गाडी स्पॉन (Spawn) करा!");
+        return;
+    }
 
     if (isDriving) {
         // गाडीतून बाहेर उतरणे
         isDriving = false;
         player.visible = true;
-        // कॅरेक्टर गाडीच्या डाव्या बाजूला उतरेल
+        // गाडीच्या किंचित बाजूला उतरवणे
         player.position.set(vehicle.position.x - 3, 0, vehicle.position.z);
         carSpeed = 0;
     } else {
-        // जर कॅरेक्टर गाडीच्या जवळ असेल तरच आत बसेल
-        if (player.position.distanceTo(vehicle.position) < 4) {
+        // गाडीच्या जवळ गेल्यावरच बसता येईल (डिस्टन्स चेक वाढवला आहे)
+        let distance = player.position.distanceTo(vehicle.position);
+        if (distance < 6) {
             isDriving = true;
-            player.visible = false; // गाडी चालवताना कॅरेक्टर लपवला
+            player.visible = false; 
         } else {
-            alert("गाडी खूप लांब आहे! जवळ जा.");
+            alert("गाडी जवळ जा! तुम्ही खूप लांब आहात.");
         }
     }
 }
@@ -219,7 +219,7 @@ function spawnVehicle(type) {
         const w4 = w1.clone(); w4.position.set(-1.2, 0.5, 1.4); vehicle.add(w4);
     }
 
-    // गाडी प्लेयरच्या समोर स्पॉन होईल, प्लेयर बाहेरच उभा राहील
+    // गाडी प्लेयरच्या अगदी समोर येईल
     vehicle.position.set(player.position.x, 0, player.position.z - 5);
     scene.add(vehicle);
     isDriving = false; 
@@ -229,8 +229,13 @@ function spawnVehicle(type) {
 function setupMobileControls() {
     const bindControl = (btnId, keyProp) => {
         const btn = document.getElementById(btnId);
+        if (!btn) return;
+        
+        // मोबाईल टच आणि माऊस क्लिक दोन्ही इव्हेंट्स कव्हर केले आहेत
         btn.addEventListener('touchstart', (e) => { e.preventDefault(); keys[keyProp] = true; });
         btn.addEventListener('touchend', (e) => { e.preventDefault(); keys[keyProp] = false; });
+        btn.addEventListener('mousedown', () => { keys[keyProp] = true; });
+        btn.addEventListener('mouseup', () => { keys[keyProp] = false; });
     };
     bindControl('btn-up', 'w');
     bindControl('btn-down', 's');
@@ -243,11 +248,9 @@ function animate() {
     const pSpeed = 0.15;
 
     if (!isDriving) {
-        // ==========================================
-        // ** १. पायाने चालतानाचे कॅरेक्टर लॉजिक **
-        // ==========================================
-        if (keys.a) playerAngle += 0.04; // डावीकडे वळणे
-        if (keys.d) playerAngle -= 0.04; // उजवीकडे वळणे
+        // १. पायथ्याने चालणे
+        if (keys.a) playerAngle += 0.04; 
+        if (keys.d) playerAngle -= 0.04; 
         player.rotation.y = playerAngle;
 
         if (keys.w) {
@@ -259,6 +262,7 @@ function animate() {
             player.position.z += Math.cos(playerAngle) * pSpeed;
         }
 
+        // प्लेयरच्या पाठीमागून फॉलो करणारा कॅमेरा
         camera.position.set(
             player.position.x + Math.sin(playerAngle) * 7,
             player.position.y + 4,
@@ -267,9 +271,7 @@ function animate() {
         camera.lookAt(player.position.x, player.position.y + 1, player.position.z - 2);
 
     } else if (vehicle) {
-        // ==========================================
-        // ** २. गाडी चालवतानाचे लॉजिक **
-        // ==========================================
+        // २. गाडी चालवणे
         if (keys.w) {
             carSpeed += acceleration;
             if (carSpeed > maxSpeed) carSpeed = maxSpeed;
@@ -312,4 +314,4 @@ function onWindowResize() {
 }
 
 window.onload = init3D;
-            
+        
