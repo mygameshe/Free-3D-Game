@@ -1,51 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Game</title>
+<title>Bike Game</title>
 
 <style>
 body{
 margin:0;
-background:#111;
-color:white;
-font-family:Arial;
-display:flex;
-justify-content:center;
-align-items:center;
+overflow:hidden;
+background:#4fc3f7;
+}
+
+#game{
+position:relative;
+width:100vw;
 height:100vh;
-text-align:center;
+overflow:hidden;
 }
 
-.box{
-background:#222;
-padding:30px;
-border-radius:15px;
-box-shadow:0 0 20px cyan;
+#road{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+width:220px;
+height:100%;
+background:#444;
 }
 
-button{
-padding:15px 30px;
-font-size:18px;
-background:red;
-color:white;
-border:none;
-border-radius:10px;
-cursor:pointer;
+.line{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+width:10px;
+height:60px;
+background:white;
+animation:move 1s linear infinite;
+}
+
+@keyframes move{
+0%{top:-60px;}
+100%{top:100vh;}
+}
+
+#bike{
+position:absolute;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+font-size:55px;
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="box">
-<h1>🏍️ 3D Bike Game</h1>
-<p>Game Development Started...</p>
-<button onclick="alert('Next Step: 3D World Coming Soon!')">
-Start Ride
-</button>
+<div id="game">
+
+<div id="road">
+<div class="line" style="animation-delay:0s"></div>
+<div class="line" style="animation-delay:.25s"></div>
+<div class="line" style="animation-delay:.5s"></div>
+<div class="line" style="animation-delay:.75s"></div>
 </div>
+
+<div id="bike">🏍️</div>
+
+</div>
+
+<script>
+
+let bike=document.getElementById("bike");
+let x=window.innerWidth/2;
+
+document.addEventListener("keydown",e=>{
+if(e.key=="ArrowLeft") x-=20;
+if(e.key=="ArrowRight") x+=20;
+bike.style.left=x+"px";
+});
+
+</script>
 
 </body>
 </html>
