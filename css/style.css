@@ -23,7 +23,6 @@ body{
     z-index: 1;
 }
 
-/* फोन बटन वर डाव्या बाजूला सेट केले जेणेकरून मध्ये येणार नाही */
 #open-phone-btn {
     position: absolute;
     top: 15px;
@@ -40,7 +39,6 @@ body{
     cursor: pointer;
 }
 
-/* इन-गेम मोबाईल फोन */
 #phone-container {
     position: absolute;
     top: 50%;
@@ -74,11 +72,6 @@ body{
     color: #888;
 }
 
-.phone-content {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
 .phone-content input {
     width: 100%;
     padding: 10px;
@@ -98,11 +91,9 @@ body{
     color: white;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
     font-weight: bold;
 }
 
-/* कंट्रोल्स लेआऊट */
 #mobile-controls {
     position: absolute;
     bottom: 0;
@@ -113,55 +104,62 @@ body{
     pointer-events: none;
 }
 
-.left-cluster, .right-cluster {
+/* --- रिअलिस्टिक ३D जॉयस्टिकची डिझाईन --- */
+#joystick-container {
     position: absolute;
-    bottom: 20px;
-    display: flex;
+    bottom: 30px;
+    left: 40px;
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
     pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
-.left-cluster {
-    left: 25px;
-    gap: 15px;
+#joystick-knob {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    transition: transform 0.05s linear;
 }
 
 .right-cluster {
+    position: absolute;
+    bottom: 20px;
     right: 25px;
     flex-direction: column;
     gap: 10px;
     align-items: flex-end;
+    display: flex;
+    pointer-events: auto;
 }
 
 .ctrl-btn {
-    width: 65px;
-    height: 65px;
+    width: 120px;
+    height: 50px;
     background: rgba(0, 0, 0, 0.5);
     border: 2px solid rgba(255, 255, 255, 0.3);
     color: white;
-    font-size: 20px;
-    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-.pedal-btn {
-    width: 120px;
-    height: 50px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
 #btn-up { background: rgba(40, 167, 69, 0.6); } 
 #btn-down { background: rgba(220, 53, 69, 0.6); } 
 
-.ctrl-btn:active {
-    background: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* ** एंटर/एक्झिट बटन आता उजव्या बाजूला रेस बटन्सच्या अगदी वर दिसेल ** */
 #exit-btn {
     width: 120px;
     height: 45px;
