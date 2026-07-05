@@ -5,19 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>3D GTA Style Game</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- 3D जगासाठी Three.js लायब्ररी -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
-    <!-- ३D गेम कंटेनर -->
     <div id="game-container"></div>
 
-    <!-- ऑन-स्क्रीन बटन्स (वरच्या बाजूला) -->
     <button id="open-phone-btn" onclick="toggleMobilePhone()">📱 PHONE</button>
     <button id="exit-btn" onclick="toggleVehicleDrive()">🚗 ENTER/EXIT</button>
 
-    <!-- इन-गेम मोबाईल फोन (चिटकोड स्क्रीन) -->
     <div id="phone-container" class="hidden">
         <div class="phone-screen">
             <div class="phone-header">03:00 PM</div>
@@ -29,15 +25,12 @@
         </div>
     </div>
 
-    <!-- GTA ५ सारखे ऑन-स्क्रीन कंट्रोल्स -->
     <div id="mobile-controls">
-        <!-- डाव्या बाजूला वळवण्यासाठी बटन्स -->
         <div class="left-cluster">
             <button class="ctrl-btn" id="btn-left">◀</button>
             <button class="ctrl-btn" id="btn-right">▶</button>
         </div>
         
-        <!-- उजव्या बाजूला पळवण्यासाठी आणि ब्रेकसाठी बटन्स -->
         <div class="right-cluster">
             <button class="ctrl-btn pedal-btn" id="btn-up">▲ RACE / WALK</button>
             <button class="ctrl-btn pedal-btn" id="btn-down">▼ BREAK / BACK</button>
